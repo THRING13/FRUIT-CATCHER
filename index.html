@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fruit Catcher 🍓 — Jeu de fruits gratuit</title>
+<meta name="description" content="Fruit Catcher est un jeu de fruits gratuit en ligne. Attrape les fruits, évite les bombes, crée des combos et bats ton meilleur score sur PC et mobile.">
+<meta name="keywords" content="fruit catcher, fruit catcher game, jeu fruit, jeu de fruits, jeu gratuit, jeu en ligne, jeu navigateur, fruit game, arcade game">
+<meta name="author" content="THRING13">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://thring13.github.io/FRUIT-CATCHER/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://thring13.github.io/FRUIT-CATCHER/">
+<meta property="og:title" content="Fruit Catcher 🍓 — Jeu de fruits gratuit">
+<meta property="og:description" content="Attrape les fruits, évite les bombes, fais des combos et bats ton record.">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Fruit Catcher 🍓 — Jeu de fruits gratuit">
+<meta name="twitter:description" content="Un jeu d'arcade gratuit à jouer directement dans ton navigateur.">
+<style>
+:root{--bg:#07131f;--panel:rgba(13,31,45,.88);--text:#f5fbff;--muted:#8da7b8;--accent:#7ee081;--accent2:#ffd166;--line:rgba(255,255,255,.09)}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;width:100%}
+body{min-height:100vh;color:var(--text);font-family:Nunito,Arial,sans-serif;background:radial-gradient(circle at 15% 15%,rgba(52,211,153,.12),transparent 30%),radial-gradient(circle at 85% 20%,rgba(59,130,246,.13),transparent 32%),linear-gradient(145deg,#06111b,#0a1d2b 55%,#06121c);display:flex;justify-content:center;overflow-x:hidden}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.25;background-image:radial-gradient(rgba(255,255,255,.16) 1px,transparent 1px);background-size:34px 34px}
+.app{width:min(1120px,94vw);padding:28px 0 24px;position:relative;z-index:1}
+.topbar{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}
+.brand{display:flex;align-items:center;gap:13px}
+.brand-icon{width:50px;height:50px;border-radius:16px;display:grid;place-items:center;font-size:28px;background:linear-gradient(145deg,#ff7183,#e93659);box-shadow:0 12px 28px rgba(233,54,89,.25)}
+.brand h1{margin:0;font-family:Arial,sans-serif;font-size:27px;letter-spacing:.2px}
+.brand p{margin:2px 0 0;color:var(--muted);font-size:13px}
+.icon-btn,.secondary-btn,.primary-btn{border:0;cursor:pointer;font-family:inherit;font-weight:800;transition:transform .15s ease,filter .15s ease}
+.icon-btn:hover,.secondary-btn:hover,.primary-btn:hover{transform:translateY(-2px);filter:brightness(1.08)}
+.icon-btn{width:46px;height:46px;border-radius:14px;color:white;background:var(--panel);border:1px solid var(--line);font-size:19px}
+.game-shell{padding:15px;border:1px solid rgba(255,255,255,.08);border-radius:28px;background:rgba(5,16,25,.72);box-shadow:0 30px 80px rgba(0,0,0,.36);backdrop-filter:blur(18px)}
+.hud{display:grid;grid-template-columns:1fr 1fr 1fr 1.25fr;gap:10px;margin-bottom:12px}
+.stat,.lives{min-height:68px;padding:11px 16px;border:1px solid var(--line);border-radius:17px;background:linear-gradient(145deg,rgba(21,43,58,.92),rgba(12,28,41,.92));box-shadow:inset 0 1px rgba(255,255,255,.04)}
+.stat-label{display:block;color:#7592a5;font-size:10px;font-weight:900;letter-spacing:1.6px}
+.stat strong{display:block;margin-top:1px;font-size:28px}
+.center-stat{text-align:center}
+.lives{display:flex;align-items:center;justify-content:space-between}
+#lives{font-size:21px;letter-spacing:2px}
+.canvas-wrap{position:relative;width:100%;border-radius:22px;overflow:hidden;background:#102838;border:1px solid rgba(255,255,255,.1);line-height:0}
+canvas{display:block;width:100%;height:auto;aspect-ratio:3/2;touch-action:none}
+.overlay{position:absolute;inset:0;display:grid;place-items:center;padding:22px;background:rgba(3,12,20,.48);backdrop-filter:blur(7px);transition:opacity .25s ease;line-height:normal}
+.overlay.hidden{opacity:0;pointer-events:none}
+.overlay-card{width:min(510px,92%);padding:30px;text-align:center;border:1px solid rgba(255,255,255,.13);border-radius:27px;background:linear-gradient(150deg,rgba(15,38,53,.95),rgba(7,23,35,.96));box-shadow:0 30px 70px rgba(0,0,0,.42)}
+.hero-fruits{font-size:42px;margin-bottom:8px}
+.eyebrow{color:var(--accent);font-size:10px;font-weight:900;letter-spacing:2.2px}
+.overlay h2{margin:8px 0 9px;font-size:clamp(34px,6vw,52px)}
+.overlay-card>p{color:#a9becb;line-height:1.55}
+.mini-rules{display:flex;justify-content:center;flex-wrap:wrap;gap:8px;margin:18px 0}
+.mini-rules span{padding:7px 10px;border-radius:999px;background:rgba(255,255,255,.055);border:1px solid var(--line);color:#d9e7ee;font-size:12px;font-weight:800}
+.primary-btn{min-width:190px;padding:14px 25px;border-radius:14px;color:#0a171e;background:linear-gradient(135deg,#a2f69d,#58d889);box-shadow:0 12px 28px rgba(88,216,137,.2);font-size:16px}
+.controls{margin-top:13px!important;color:#6f8998!important;font-size:11px}
+.bottom-panel{display:grid;grid-template-columns:130px 1fr 120px;gap:13px;align-items:center;margin-top:12px}
+.combo-box,.progress,.secondary-btn{min-height:58px;border:1px solid var(--line);border-radius:16px;background:rgba(18,39,53,.8)}
+.combo-box{display:flex;align-items:center;justify-content:space-around}
+.combo-box span{color:var(--muted);font-size:9px;font-weight:900;letter-spacing:1.2px}
+.combo-box strong{color:var(--accent2);font-size:23px}
+.progress{padding:11px 14px}
+.progress-top{display:flex;justify-content:space-between;color:#7f98a8;font-size:9px;font-weight:900;letter-spacing:1px}
+.progress-track{height:8px;margin-top:9px;overflow:hidden;border-radius:999px;background:rgba(255,255,255,.07)}
+.progress-bar{width:0;height:100%;border-radius:inherit;background:linear-gradient(90deg,#72e88c,#ffe27a);transition:width .2s ease}
+.secondary-btn{color:#dceaf0;font-size:12px}
+#seo-content{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+footer{display:flex;justify-content:center;gap:8px;margin-top:14px;color:#5e7888;font-size:11px}
+@media(max-width:700px){.app{width:96vw;padding-top:15px}.brand h1{font-size:22px}.brand p{display:none}.hud{grid-template-columns:repeat(3,1fr)}.lives{grid-column:1/-1}.bottom-panel{grid-template-columns:1fr 1fr}.progress{grid-column:1/-1;grid-row:1}.overlay-card{padding:22px 17px}}
+</style>
+</head>
+<body>
+<main class="app">
+<header class="topbar">
+<div class="brand">
+<div class="brand-icon">🍓</div>
+<div><h1>Fruit Catcher</h1><p>Attrape les bons fruits. Évite les bombes.</p></div>
+</div>
+<button id="soundBtn" class="icon-btn" aria-label="Activer ou couper le son">🔊</button>
+</header>
+
+<section class="game-shell">
+<div class="hud">
+<div class="stat"><span class="stat-label">SCORE</span><strong id="score">0</strong></div>
+<div class="stat center-stat"><span class="stat-label">NIVEAU</span><strong id="level">1</strong></div>
+<div class="stat"><span class="stat-label">RECORD</span><strong id="highscore">0</strong></div>
+<div class="lives"><span class="stat-label">VIES</span><div id="lives">❤️❤️❤️</div></div>
+</div>
+
+<div class="canvas-wrap">
+<canvas id="gameCanvas" width="900" height="600"></canvas>
+<div id="overlay" class="overlay">
+<div class="overlay-card">
+<div class="hero-fruits">🍎 🍓 🍊</div>
+<span class="eyebrow">ARCADE • FRUIT • FUN</span>
+<h2 id="overlayTitle">Fruit Catcher</h2>
+<p id="overlayText">Déplace le panier et attrape les fruits qui tombent. Les bombes te font perdre une vie !</p>
+<div class="mini-rules"><span>🍎 +10</span><span>🍓 +20</span><span>⭐ +30</span><span>💣 −1 vie</span></div>
+<button id="startBtn" class="primary-btn">▶ Jouer</button>
+<p class="controls">← → clavier &nbsp; • &nbsp; souris &nbsp; • &nbsp; tactile</p>
+</div>
+</div>
+</div>
+
+<div class="bottom-panel">
+<div class="combo-box"><span>COMBO</span><strong id="combo">x1</strong></div>
+<div class="progress"><div class="progress-top"><span>PROCHAIN NIVEAU</span><span id="progressText">0 / 100</span></div><div class="progress-track"><div id="progressBar" class="progress-bar"></div></div></div>
+<button id="pauseBtn" class="secondary-btn">Ⅱ Pause</button>
+</div>
+</section>
+
+<section id="seo-content">
+<h2>Fruit Catcher — jeu de fruits gratuit en ligne</h2>
+<p>Fruit Catcher est un jeu d’arcade gratuit à jouer directement dans le navigateur. Attrape les fruits qui tombent avec ton panier, gagne des points, construis des combos et évite les bombes.</p>
+</section>
+
+<footer><span>Fruit Catcher</span><span>•</span><span>Catch. Combo. Survive.</span></footer>
+</main>
+<script src="game.js"></script>
+</body>
+</html>
