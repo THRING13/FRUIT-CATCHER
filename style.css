@@ -1,0 +1,321 @@
+/* =========================================
+   RESET
+========================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* =========================================
+   BODY
+========================================= */
+
+body {
+
+    min-height: 100vh;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    font-family:
+        "Segoe UI",
+        Arial,
+        sans-serif;
+
+    background:
+        linear-gradient(
+            180deg,
+            #87CEEB 0%,
+            #4a90d9 100%
+        );
+
+    overflow: hidden;
+}
+
+
+/* =========================================
+   TITRE
+========================================= */
+
+h1 {
+
+    color: white;
+
+    font-size: 38px;
+
+    margin-bottom: 10px;
+
+    text-shadow:
+        2px 2px 4px
+        rgba(0, 0, 0, 0.4);
+}
+
+
+/* =========================================
+   INTERFACE
+========================================= */
+
+#ui {
+
+    width: 600px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 10px;
+
+    color: white;
+
+    font-size: 17px;
+
+    font-weight: bold;
+
+    text-shadow:
+        1px 1px 3px
+        rgba(0, 0, 0, 0.5);
+}
+
+
+/* =========================================
+   CONTENEUR DU JEU
+========================================= */
+
+#gameContainer {
+
+    position: relative;
+
+    width: 600px;
+
+    height: 500px;
+
+    border:
+        4px solid #5d4037;
+
+    border-radius: 14px;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 8px 30px
+        rgba(0, 0, 0, 0.4);
+}
+
+
+/* =========================================
+   CANVAS
+========================================= */
+
+#gameCanvas {
+
+    display: block;
+
+    width: 600px;
+
+    height: 500px;
+
+    background:
+        linear-gradient(
+            180deg,
+            #a8d8f0 0%,
+            #cceeff 60%,
+            #e8f9d8 100%
+        );
+
+    touch-action: none;
+}
+
+
+/* =========================================
+   OVERLAY
+========================================= */
+
+#overlay {
+
+    position: absolute;
+
+    inset: 0;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    text-align: center;
+
+    color: white;
+
+    background:
+        rgba(0, 0, 0, 0.65);
+
+    padding: 20px;
+}
+
+
+/* =========================================
+   OVERLAY TITLE
+========================================= */
+
+#overlayTitle {
+
+    font-size: 38px;
+
+    margin-bottom: 15px;
+
+    text-shadow:
+        2px 2px 5px
+        rgba(0, 0, 0, 0.5);
+}
+
+
+/* =========================================
+   OVERLAY TEXT
+========================================= */
+
+#overlayText {
+
+    font-size: 18px;
+
+    margin-bottom: 25px;
+
+    max-width: 450px;
+
+    line-height: 1.5;
+}
+
+
+/* =========================================
+   BOUTON
+========================================= */
+
+button {
+
+    padding:
+        13px
+        35px;
+
+    font-size: 18px;
+
+    font-weight: bold;
+
+    color: white;
+
+    background: #4CAF50;
+
+    border: none;
+
+    border-radius: 30px;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 5px 12px
+        rgba(0, 0, 0, 0.3);
+
+    transition:
+        transform 0.15s,
+        background 0.15s;
+}
+
+
+button:hover {
+
+    background: #43a047;
+
+    transform: scale(1.06);
+}
+
+
+button:active {
+
+    transform: scale(0.98);
+}
+
+
+/* =========================================
+   INSTRUCTIONS
+========================================= */
+
+#hint {
+
+    color:
+        rgba(255, 255, 255, 0.9);
+
+    font-size: 14px;
+
+    margin-top: 10px;
+
+    text-shadow:
+        1px 1px 2px
+        rgba(0, 0, 0, 0.4);
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 650px) {
+
+    body {
+
+        overflow: auto;
+
+        padding: 15px 0;
+    }
+
+
+    h1 {
+
+        font-size: 28px;
+    }
+
+
+    #ui {
+
+        width: 95vw;
+
+        font-size: 12px;
+    }
+
+
+    #gameContainer {
+
+        width: 95vw;
+
+        height: auto;
+    }
+
+
+    #gameCanvas {
+
+        width: 100%;
+
+        height: auto;
+    }
+
+
+    #overlayTitle {
+
+        font-size: 28px;
+    }
+
+
+    #overlayText {
+
+        font-size: 15px;
+    }
+}

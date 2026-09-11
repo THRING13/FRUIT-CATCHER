@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Fruit Catcher 🍎</title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+</head>
+
+
+<body>
+
+    <!-- =================================
+         TITRE
+    ================================== -->
+
+    <h1>🍎 Fruit Catcher 🍓</h1>
+
+
+    <!-- =================================
+         INFORMATIONS DU JEU
+    ================================== -->
+
+    <div id="ui">
+
+        <span>
+            🏆 Score :
+            <strong id="score">0</strong>
+        </span>
+
+        <span>
+            📈 Niveau :
+            <strong id="level">1</strong>
+        </span>
+
+        <span>
+            🥇 Record :
+            <strong id="highscore">0</strong>
+        </span>
+
+        <span>
+            ❤️ Vies :
+            <strong id="lives">❤️❤️❤️</strong>
+        </span>
+
+    </div>
+
+
+    <!-- =================================
+         CONTENEUR DU JEU
+    ================================== -->
+
+    <div id="gameContainer">
+
+        <!-- CANVAS -->
+
+        <canvas
+            id="gameCanvas"
+            width="600"
+            height="500">
+        </canvas>
+
+
+        <!-- =================================
+             MENU / GAME OVER
+        ================================== -->
+
+        <div id="overlay">
+
+            <h2 id="overlayTitle">
+                🍎 Fruit Catcher
+            </h2>
+
+            <p id="overlayText">
+                Attrape les fruits et évite les bombes !
+            </p>
+
+            <button id="startBtn">
+                Jouer
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================
+         INSTRUCTIONS
+    ================================== -->
+
+    <p id="hint">
+        ⌨️ ← → &nbsp; | &nbsp;
+        🖱️ Souris &nbsp; | &nbsp;
+        📱 Tactile
+    </p>
+
+
+    <!-- JAVASCRIPT -->
+
+    <script src="game.js"></script>
+
+</body>
+
+</html>
