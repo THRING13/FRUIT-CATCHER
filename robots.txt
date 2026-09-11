@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://thring13.github.io/FRUIT-CATCHER/sitemap.xml
